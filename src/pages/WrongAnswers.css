@@ -1,0 +1,74 @@
+.wrong-answers-page {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.page-header {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+.generate-exam-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.errors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.error-card {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.course-badge {
+  background: #1e293b;
+  color: #38bdf8;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.question-text {
+  margin: 15px 0;
+  font-size: 1.05rem;
+}
+
+.answers-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-box {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.answer-box.wrong {
+  background: rgba(239, 68, 68, 0.1);
+  border-right: 3px solid #ef4444;
+}
+
+.answer-box.correct {
+  background: rgba(34, 197, 94, 0.1);
+  border-right: 3px solid #22c55e;
+}

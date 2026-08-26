@@ -1,0 +1,98 @@
+body {
+  background-color: #0b1120;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar-container {
+  position: fixed;  /* لتثبيت القائمة فوق الشاشة أثناء التمرير */
+  top: 20px;        /* مسافة من الأعلى */
+  right: 20px;      /* مسافة من اليمين */
+  z-index: 9999;    /* لتبقى القائمة فوق أي عنصر آخر */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.menu-btn {
+  width: 55px;
+  height: 55px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+.menu-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+.menu-list {
+  list-style: none;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #1e293b;
+  border-radius: 16px;
+  width: 200px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: top left;
+  transform: rotate(-15deg) scale(0.8) translateY(-20px);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.menu-list.open {
+  opacity: 1;
+  visibility: visible;
+  transform: rotate(0deg) scale(1) translateY(0);
+}
+
+.menu-list li {
+  margin: 6px 0;
+}
+
+.menu-list li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.menu-list li a .icon {
+  font-size: 18px;
+  margin-right: 14px;
+  transition: transform 0.2s ease;
+}
+
+.menu-list li a:hover,
+.menu-list li a.active {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.menu-list li a:hover .icon,
+.menu-list li a.active .icon {
+  transform: scale(1.15);
+}
+/* إلغاء أي مساحات علوية فارغة ضخمة */
+.main-content {
+  padding-top: 80px; /* مسافة بسيطة ومناسبة لتأخذ الناف بار مكانها فوق المحتوى */
+  width: 100%;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

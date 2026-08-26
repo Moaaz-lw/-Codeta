@@ -1,0 +1,68 @@
+/* الخلفية المبهجة الفاتحة (Default Light Theme) */
+.tech-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f5f3ff 100%);
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.grid-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(14, 165, 233, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 165, 233, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.glowing-orbs .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.orb-1 { width: 400px; height: 400px; background: #38bdf8; top: 5%; left: 10%; }
+.orb-2 { width: 450px; height: 450px; background: #a855f7; bottom: 5%; right: 10%; }
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 50px) scale(1.15); }
+}
+
+.code-stream {
+  position: absolute;
+  opacity: 0.15;
+  font-family: 'Fira Code', monospace;
+  color: #0284c7;
+  font-size: 1.3rem;
+  top: 15%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-weight: bold;
+}
+
+/* التبديل للثيم الداكن عند الضغط على زر الثيم */
+.app-container.dark .tech-bg-container {
+  background: #030712;
+}
+
+.app-container.dark .grid-overlay {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.app-container.dark .code-stream {
+  color: #38bdf8;
+  opacity: 0.08;
+}

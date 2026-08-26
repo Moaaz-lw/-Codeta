@@ -1,0 +1,222 @@
+/* =========================================================
+   1. الحاوية الرئيسية للناف بار (ثابتة أقصى اليمين)
+   ========================================================= */
+   .navbar-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* لضمان ظهور القائمة فوق جميع عناصر الموقع */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* =========================================================
+     2. أزرار التحكم السريع العلوية (الثيم + اللغة + تسجيل الدخول الأخضر)
+     ========================================================= */
+  .top-quick-bar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .quick-icon-btn {
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+  }
+  
+  .quick-icon-btn:hover {
+    transform: translateY(-2px);
+    border-color: #38bdf8;
+  }
+  
+  /* 🟢 زر تسجيل الدخول الأخضر المتوهج */
+  .login-main-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(16, 185, 129, 0.45);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .login-main-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.65);
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  }
+  
+  .login-main-btn i {
+    font-size: 1.1rem;
+  }
+  
+  /* =========================================================
+     3. زر فتح/إغلاق القائمة (Hamburger Button)
+     ========================================================= */
+  .menu-btn {
+    width: 55px;
+    height: 55px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  .menu-btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+  }
+  
+  .menu-btn.active {
+    background-color: #ef4444;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+  }
+  
+  /* =========================================================
+     4. القائمة المنسدلة (Menu List)
+     ========================================================= */
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #1e293b;
+    border-radius: 18px;
+    width: 230px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    
+    /* أقصى ارتفاع متاح واستمرار التمرير للوصول لجميع الخانات */
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    
+    /* حالة الإخفاء والتحريك */
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top left;
+    transform: rotate(-15deg) scale(0.8) translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* حالة الظهور عند الضغط على الزر */
+  .menu-list.open {
+    opacity: 1;
+    visibility: visible;
+    transform: rotate(0deg) scale(1) translateY(0);
+  }
+  
+  /* تنسيق شريط التمرير (Scrollbar) الداخلي للقائمة */
+  .menu-list::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .menu-list::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.6);
+    border-radius: 10px;
+  }
+  
+  .menu-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* =========================================================
+     5. العناصر والروابط داخل القائمة (Menu Items)
+     ========================================================= */
+  .menu-list li {
+    margin: 4px 0;
+  }
+  
+  .menu-list li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+  }
+  
+  .menu-list li a .icon {
+    font-size: 18px;
+    margin-right: 14px;
+    transition: transform 0.2s ease;
+  }
+  
+  /* التأثير عند التمرير (Hover & Active) */
+  .menu-list li a:hover,
+  .menu-list li a.active {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+  
+  .menu-list li a:hover .icon,
+  .menu-list li a.active .icon {
+    transform: scale(1.15);
+  }
+  /* تنسيق الزر الأخضر داخل الناف بار */
+.auth-btn-wrapper {
+  margin-top: 10px;
+  padding: 0 5px;
+}
+
+.login-green-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff !important;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  transition: all 0.3s ease;
+}
+
+.login-green-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+  transform: translateY(-2px);
+}
+.menu-list li a .icon {
+  margin-left: 10px; /* مسافة بين الأيقونة والنص بالعربي */
+  font-size: 1.1rem;
+}
+
+.menu-list li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

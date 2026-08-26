@@ -42,7 +42,6 @@
 
 .close-modal-btn:hover { background: #ef4444; color: #fff; }
 
-/* 🔢 الـ 6 خطوات المضيئة */
 .stepper-container {
   display: flex;
   justify-content: space-between;
@@ -95,7 +94,6 @@
 
 .step-item.completed .step-label { color: #10b981; }
 
-/* ⚙️ أزرار اختيار نوع التوثيق */
 .auth-toggle-buttons {
   display: flex;
   gap: 10px;
@@ -143,7 +141,6 @@
   font-weight: bold;
 }
 
-/* 👨👩 خيارات الجنس (Radio) */
 .radio-group {
   display: flex;
   gap: 15px;
@@ -214,6 +211,16 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  min-height: 140px;
+  justify-content: center;
+}
+
+.preview-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0284c7;
 }
 
 .upload-icon { font-size: 2.2rem; color: #0284c7; }

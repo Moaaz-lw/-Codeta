@@ -7,12 +7,12 @@ const egyptGovernorates = [
   "كفر الشيخ", "المنوفية", "الغربية", "البحيرة", "الإسماعيلية", "بورسعيد",
   "السويس", "المنيا", "بني سويف", "الفيوم", "أسيوط", "سوهاج", "قنا",
   "الأقصر", "أسوان", "البحر الأحمر", "الوادي الجديد", "مطروح", "شمال سيناء",
-  "جنو ب سيناء", "دمياط"
+  "جنوب سيناء", "دمياط"
 ];
 
 const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [authMethod, setAuthMethod] = useState('gmail'); // gmail | phone
+  const [authMethod, setAuthMethod] = useState('gmail');
   const [otpSent, setOtpSent] = useState(false);
   const [otpCode, setOtpCode] = useState('');
 
@@ -42,29 +42,43 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
     );
   };
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    if (currentStep < 6) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      onSaveUser(formData);
-      onClose();
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const photoUrl = URL.createObjectURL(file);
+      setFormData((prev) => ({ ...prev, photo: photoUrl }));
     }
   };
 
+  // دالة الانتقال للخطوة التالية
+  const handleNextStep = (e) => {
+    if (e) e.preventDefault();
+    if (currentStep < 6) {
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+
+  // دالة الإرسال النهائي المباشر
+  const handleFinalSubmit = (e) => {
+    if (e) e.preventDefault();
+    // إرسال البيانات المكتملة إلى App.jsx
+    onSaveUser(formData);
+    // إغلاق النافذة المنبثقة
+    onClose();
+  };
+
   const handlePrev = () => {
-    if (currentStep > 1) setCurrentStep(currentStep - 1);
+    if (currentStep > 1) setCurrentStep((prev) => prev - 1);
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-card">
-        {/* زر الإغلاق X */}
-        <button className="close-modal-btn" onClick={onClose}>
+        <button type="button" className="close-modal-btn" onClick={onClose}>
           <i className="bi bi-x-lg"></i>
         </button>
 
-        {/* 🔢 مؤشر الـ 6 خطوات المتقدم */}
+        {/* Stepper Header */}
         <div className="stepper-container">
           {[1, 2, 3, 4, 5, 6].map((step) => (
             <div 
@@ -86,9 +100,8 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
           ))}
         </div>
 
-        <form onSubmit={handleNext} className="modal-form">
-          
-          {/* 🔹 الخطوة 1: توثيق الحساب (Gmail أو Phone OTP) */}
+        {/* Form Body */}
+        <form onSubmit={currentStep === 6 ? handleFinalSubmit : handleNextStep} className="modal-form">
           {currentStep === 1 && (
             <div className="step-content">
               <h4><i className="bi bi-shield-check"></i> تأكيد الهوية والربط</h4>
@@ -138,24 +151,23 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
                   <div className="otp-box">
                     <input 
                       type="text" 
-                      placeholder="أدخل كود الـ OTP المكون من 4 أرقام" 
+                      placeholder="أدخل كود الـ OTP" 
                       value={otpCode}
                       maxLength="4"
                       required 
                       onChange={(e) => setOtpCode(e.target.value)}
                     />
-                    <span className="verify-success"><i className="bi bi-check-circle-fill"></i> تم الإرسال بنجاح</span>
+                    <span className="verify-success"><i className="bi bi-check-circle-fill"></i> تم الإرسال</span>
                   </div>
                 )}
               </div>
             </div>
           )}
 
-          {/* 🔹 الخطوة 2: الهوية والرقم القومي والجنس */}
           {currentStep === 2 && (
             <div className="step-content">
               <h4><i className="bi bi-person-vcard"></i> البيانات الشخصية الهامة</h4>
-              <p>يرجى التأكد من كتابة الرقم القومي بدقة</p>
+              <p>يرجى التأكد من كتابة الاسم والرقم القومي بدقة</p>
               
               <div className="inputs-stack">
                 <div className="name-grid">
@@ -221,7 +233,6 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
             </div>
           )}
 
-          {/* 🔹 الخطوة 3: أرقام التواصل */}
           {currentStep === 3 && (
             <div className="step-content">
               <h4><i className="bi bi-telephone"></i> أرقام التواصل</h4>
@@ -245,11 +256,10 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
             </div>
           )}
 
-          {/* 🔹 الخطوة 4: المحافظة (Drop-down) */}
           {currentStep === 4 && (
             <div className="step-content">
               <h4><i className="bi bi-geo-alt"></i> المحافظة والإقامة</h4>
-              <p>اختر المحافظة المقيم بها في جمهورية مصر العربية</p>
+              <p>اختر المحافظة المقيم بها</p>
               <div className="inputs-stack">
                 <div className="select-group">
                   <label>اختر المحافظة:</label>
@@ -266,7 +276,6 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
             </div>
           )}
 
-          {/* 🔹 الخطوة 5: المرحلة والمسار الدراسي */}
           {currentStep === 5 && (
             <div className="step-content">
               <h4><i className="bi bi-journal-bookmark"></i> المرحلة والمسار التعليمي</h4>
@@ -279,11 +288,8 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
                     onChange={(e) => setFormData({...formData, grade: e.target.value})}
                   >
                     <option>الصف الأول الثانوي</option>
-                    <option>تانية ثانوي</option>
+                    <option>الصف الثاني الثانوي</option>
                     <option>الصف الثالث الثانوي</option>
-                    <option>أولى باكالوريا</option>
-                    <option>تانية باكالوريا</option>
-                    <option>كورس Front-End Professional</option>
                   </select>
                 </div>
 
@@ -301,34 +307,49 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
             </div>
           )}
 
-          {/* 🔹 الخطوة 6: الصورة الشخصية */}
           {currentStep === 6 && (
             <div className="step-content text-center">
               <h4><i className="bi bi-camera"></i> الصورة الشخصية للبروفايل</h4>
-              <p>اختر صورة ممتازة لتظهر في بروفايلك ولوحة الصدارة</p>
+              <p>اختر صورة ممتازة لتظهر في بروفايلك</p>
               <div className="photo-upload-zone">
-                <i className="bi bi-cloud-arrow-up-fill upload-icon"></i>
-                <span>اضغط للرفع أو اسحب الصورة هنا</span>
+                {formData.photo ? (
+                  <img src={formData.photo} alt="معاينة" className="preview-image" />
+                ) : (
+                  <>
+                    <i className="bi bi-cloud-arrow-up-fill upload-icon"></i>
+                    <span>اضغط للرفع أو اسحب الصورة هنا</span>
+                  </>
+                )}
                 <input 
                   type="file" 
                   accept="image/*"
-                  onChange={(e) => setFormData({...formData, photo: e.target.files[0]})}
+                  onChange={handlePhotoChange}
                 />
               </div>
             </div>
           )}
 
-          {/* أزرار التنقل السفلية */}
+          {/* Action Buttons */}
           <div className="modal-actions">
             {currentStep > 1 && (
               <button type="button" className="btn-prev" onClick={handlePrev}>
                 <i className="bi bi-arrow-right"></i> السابق
               </button>
             )}
-            <button type="submit" className="btn-next">
-              {currentStep === 6 ? 'إتمام التسجيل والبدء 🚀' : 'التالي'} 
-              {currentStep < 6 && <i className="bi bi-arrow-left"></i>}
-            </button>
+
+            {currentStep < 6 ? (
+              <button type="submit" className="btn-next">
+                التالي <i className="bi bi-arrow-left"></i>
+              </button>
+            ) : (
+              <button 
+                type="button" 
+                className="btn-next" 
+                onClick={handleFinalSubmit}
+              >
+                إتمام التسجيل والبدء 🚀
+              </button>
+            )}
           </div>
         </form>
       </div>

@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "home": "https://Moaaz-lw.github.io/-Codeta.git",
+  "homepage": "https://moaaz-lw.github.io/-Codeta/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy" : "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },

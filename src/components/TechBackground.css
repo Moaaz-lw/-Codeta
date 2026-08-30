@@ -1,4 +1,3 @@
-/* الخلفية المبهجة الفاتحة (Default Light Theme) */
 .tech-bg-container {
   position: fixed;
   top: 0;
@@ -50,8 +49,6 @@
   gap: 20px;
   font-weight: bold;
 }
-
-/* التبديل للثيم الداكن عند الضغط على زر الثيم */
 .app-container.dark .tech-bg-container {
   background: #030712;
 }

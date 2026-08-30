@@ -50,7 +50,6 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
     }
   };
 
-  // دالة الانتقال للخطوة التالية
   const handleNextStep = (e) => {
     if (e) e.preventDefault();
     if (currentStep < 6) {
@@ -58,12 +57,9 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
     }
   };
 
-  // دالة الإرسال النهائي المباشر
   const handleFinalSubmit = (e) => {
     if (e) e.preventDefault();
-    // إرسال البيانات المكتملة إلى App.jsx
     onSaveUser(formData);
-    // إغلاق النافذة المنبثقة
     onClose();
   };
 
@@ -329,7 +325,6 @@ const RegisterModal = ({ isOpen, onClose, onSaveUser }) => {
             </div>
           )}
 
-          {/* Action Buttons */}
           <div className="modal-actions">
             {currentStep > 1 && (
               <button type="button" className="btn-prev" onClick={handlePrev}>

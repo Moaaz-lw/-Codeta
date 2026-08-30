@@ -8,9 +8,7 @@
     overflow: hidden;
     color: #f8fafc;
   }
-  
-  /* خلفيات التوهج (Glow Effect) */
-  .footer-glow {
+.footer-glow {
     position: absolute;
     width: 300px;
     height: 300px;
@@ -29,16 +27,13 @@
     bottom: -50px;
     left: -50px;
   }
-  
   .footer-content {
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
   }
-  
-  /* صندوق التشجيع */
-  .encouragement-box {
+.encouragement-box {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(56, 189, 248, 0.2);
     border-radius: 24px;
@@ -84,7 +79,6 @@
     margin: 0;
   }
   
-  /* السوشيال ميديا */
   .social-section {
     text-align: center;
     margin-bottom: 40px;
@@ -137,7 +131,6 @@
     margin: 30px 0 20px;
   }
   
-  /* الشريط السفلي للحقوق والتوقيع */
   .bottom-bar {
     display: flex;
     justify-content: space-between;
@@ -170,7 +163,6 @@
     font-size: 0.8rem;
   }
   
-  /* رابط المطور Moaaz Emad */
   .developer-signature {
     color: #94a3b8;
   }

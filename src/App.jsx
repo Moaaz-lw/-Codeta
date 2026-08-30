@@ -19,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [lang, setLang] = useState('ar');
   const [currentPage, setCurrentPage] = useState('home');
   const [isAuthOpen, setIsAuthOpen] = useState(false);

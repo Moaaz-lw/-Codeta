@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// 🟢 هذا السطر هو الذي يظهر الأيقونات التي كانت مخفية
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './Navbar.css';
 
@@ -9,12 +8,10 @@ const Navbar = ({ onOpenAuth, onNavigate, theme, toggleTheme, lang, toggleLang }
 
   return (
     <div className="navbar-container">
-      {/* زر الفتح والإغلاق الرئيسي */}
       <button className={`menu-btn ${isOpen ? 'active' : ''}`} onClick={() => setIsOpen(!isOpen)}>
         <i className={`bi ${isOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
       </button>
 
-      {/* القائمة المنسدلة للأجهزة والأيقونات */}
       <ul className={`menu-list ${isOpen ? 'open' : ''}`}>
         <li>
           <a href="#home" onClick={() => { onNavigate && onNavigate('home'); setIsOpen(false); }}>
@@ -81,7 +78,6 @@ const Navbar = ({ onOpenAuth, onNavigate, theme, toggleTheme, lang, toggleLang }
           )}
         </li>
 
-        {/* 🟢 زر دخول / تسجيل الأخضر */}
         <li className="auth-btn-wrapper">
           <button className="login-green-btn" onClick={() => { onOpenAuth && onOpenAuth(); setIsOpen(false); }}>
             <i className="bi bi-shield-lock-fill"></i>
@@ -90,7 +86,6 @@ const Navbar = ({ onOpenAuth, onNavigate, theme, toggleTheme, lang, toggleLang }
         </li>
       </ul>
 
-      {/* شريط التحكم باللغة والمظهر */}
       <div className="top-quick-bar">
         <button className="quick-icon-btn" onClick={toggleTheme}>
           <i className={`bi ${theme === 'dark' ? 'bi-sun-fill' : 'bi-moon-stars-fill'}`}></i>

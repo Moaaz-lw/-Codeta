@@ -1,19 +1,13 @@
-/* =========================================================
-   1. الحاوية الرئيسية للناف بار (ثابتة أقصى اليمين)
-   ========================================================= */
    .navbar-container {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 9999; /* لضمان ظهور القائمة فوق جميع عناصر الموقع */
+    z-index: 9999; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
   
-  /* =========================================================
-     2. أزرار التحكم السريع العلوية (الثيم + اللغة + تسجيل الدخول الأخضر)
-     ========================================================= */
   .top-quick-bar {
     position: fixed;
     top: 20px;
@@ -42,7 +36,6 @@
     border-color: #38bdf8;
   }
   
-  /* 🟢 زر تسجيل الدخول الأخضر المتوهج */
   .login-main-btn {
     display: flex;
     align-items: center;
@@ -69,9 +62,6 @@
     font-size: 1.1rem;
   }
   
-  /* =========================================================
-     3. زر فتح/إغلاق القائمة (Hamburger Button)
-     ========================================================= */
   .menu-btn {
     width: 55px;
     height: 55px;
@@ -99,9 +89,6 @@
     box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
   }
   
-  /* =========================================================
-     4. القائمة المنسدلة (Menu List)
-     ========================================================= */
   .menu-list {
     list-style: none;
     margin: 0;
@@ -112,11 +99,9 @@
     width: 230px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     
-    /* أقصى ارتفاع متاح واستمرار التمرير للوصول لجميع الخانات */
     max-height: calc(100vh - 110px);
     overflow-y: auto;
     
-    /* حالة الإخفاء والتحريك */
     opacity: 0;
     visibility: hidden;
     transform-origin: top left;
@@ -124,14 +109,12 @@
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   
-  /* حالة الظهور عند الضغط على الزر */
   .menu-list.open {
     opacity: 1;
     visibility: visible;
     transform: rotate(0deg) scale(1) translateY(0);
   }
   
-  /* تنسيق شريط التمرير (Scrollbar) الداخلي للقائمة */
   .menu-list::-webkit-scrollbar {
     width: 5px;
   }
@@ -145,9 +128,6 @@
     background: transparent;
   }
   
-  /* =========================================================
-     5. العناصر والروابط داخل القائمة (Menu Items)
-     ========================================================= */
   .menu-list li {
     margin: 4px 0;
   }
@@ -170,7 +150,6 @@
     transition: transform 0.2s ease;
   }
   
-  /* التأثير عند التمرير (Hover & Active) */
   .menu-list li a:hover,
   .menu-list li a.active {
     background-color: #2563eb;
@@ -181,7 +160,6 @@
   .menu-list li a.active .icon {
     transform: scale(1.15);
   }
-  /* تنسيق الزر الأخضر داخل الناف بار */
 .auth-btn-wrapper {
   margin-top: 10px;
   padding: 0 5px;
@@ -211,7 +189,7 @@
   transform: translateY(-2px);
 }
 .menu-list li a .icon {
-  margin-left: 10px; /* مسافة بين الأيقونة والنص بالعربي */
+  margin-left: 10px; 
   font-size: 1.1rem;
 }
 

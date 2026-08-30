@@ -20,7 +20,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* روابط السوشيال ميديا للمنصة */}
         <div className="social-section">
           <h5>تابعنا على منصات التواصل الاجتماعي</h5>
           <div className="social-links">

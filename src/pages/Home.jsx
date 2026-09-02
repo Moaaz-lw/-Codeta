@@ -82,24 +82,42 @@ const Home = ({ onOpenAuth, lang }) => {
       </section>
 
       <section className="pipeline-section">
-        <div className="pipeline-wrapper">
-          <div className="pipeline-line"></div>
+      <section className="pipeline-section">
+      <div className="pipeline-wrapper">
+        <div className="pipeline-line"></div>
 
-          <div className="pipeline-nodes">
-            {pipelineSteps.map((step, idx) => (
-              <div className="pipeline-node" key={idx}>
-                <div className="node-marker">
-                  <span className="node-number">{step.num}</span>
-                  <i className={step.icon}></i>
-                </div>
-                <div className="node-content">
-                  <h4>{step.title}</h4>
-                  <p>{step.desc}</p>
-                </div>
+        <button 
+          className="scroll-arrow left-arrow d-md-none" 
+          onClick={() => document.querySelector('.pipeline-nodes').scrollBy({ left: -250, behavior: 'smooth' })}
+          aria-label="Previous"
+        >
+          <i className="bi bi-chevron-left"></i>
+        </button>
+
+        <div className="pipeline-nodes">
+          {pipelineSteps.map((step, idx) => (
+            <div className="pipeline-node" key={idx}>
+              <div className="node-marker">
+                <span className="node-number">{step.num}</span>
+                <i className={step.icon}></i>
               </div>
-            ))}
-          </div>
+              <div className="node-content">
+                <h4>{step.title}</h4>
+                <p>{step.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
+
+        <button 
+          className="scroll-arrow right-arrow d-md-none" 
+          onClick={() => document.querySelector('.pipeline-nodes').scrollBy({ left: 250, behavior: 'smooth' })}
+          aria-label="Next"
+        >
+          <i className="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </section>
 
         <div className="hologram-challenge-card">
           <div className="holo-glow"></div>

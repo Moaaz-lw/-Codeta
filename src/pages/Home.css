@@ -362,3 +362,55 @@
   line-height: 1.6;
   text-align: right;
 }
+@media (max-width: 768px) {
+  .pipeline-wrapper {
+    position: relative;
+    padding: 0 10px;
+  }
+
+  .pipeline-nodes {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 15px !important;
+    padding: 20px 5px !important;
+  }
+
+  .pipeline-nodes::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pipeline-node {
+    flex: 0 0 82% !important;
+    max-width: 82% !important;
+    scroll-snap-align: center;
+  }
+
+  .scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(13, 110, 253, 0.8);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    cursor: pointer;
+  }
+
+  .scroll-arrow.left-arrow {
+    left: 0;
+  }
+
+  .scroll-arrow.right-arrow {
+    right: 0;
+  }
+}
